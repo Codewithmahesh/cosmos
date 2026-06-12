@@ -37,89 +37,94 @@ export function WaitlistForm({
 
   if (status === 'success') {
     return (
-      <>
-        <p className="success-text">
-          You&apos;re on the list.
-        </p>
-
-        <style jsx>{`
-          .success-text {
-            font-size: 14px;
-            font-weight: 500;
-            color: ${isDark ? '#fff' : '#000'};
-          }
-        `}</style>
-      </>
+      <p
+        style={{
+          fontSize: '14px',
+          fontWeight: 500,
+          color: isDark ? '#fff' : '#000',
+        }}
+      >
+        You&apos;re on the list.
+      </p>
     )
   }
 
-return (
-  <div
-    style={{
-      width: '100%',
-      maxWidth: '100vw',
-      overflow: 'hidden',
-    }}
-  >
+  return (
     <form
       onSubmit={handleSubmit}
       style={{
-        display: 'flex',
         width: '100%',
-        maxWidth: '560px',
-        flexDirection: 'column',
+        display: 'flex',
         gap: '12px',
+        alignItems: 'center',
       }}
+      className="waitlist-form"
     >
-
       <input
         type="email"
         name="email"
         required
         placeholder="you@company.com"
+        disabled={status === 'loading'}
         style={{
+          flex: 1,
           width: '100%',
-          boxSizing: 'border-box',
           height: '44px',
+          boxSizing: 'border-box',
           padding: '0 16px',
-          borderRadius: '6px',
-          border: '1px solid #ddd',
+          borderRadius: '4px',
+          border: isDark
+            ? '1px solid rgba(255,255,255,0.3)'
+            : '1px solid rgba(0,0,0,0.15)',
+          background: isDark
+            ? 'rgba(255,255,255,0.07)'
+            : '#ffffff',
+          color: isDark ? '#fff' : '#000',
           fontSize: '14px',
+          outline: 'none',
         }}
       />
 
       <button
         type="submit"
+        disabled={status === 'loading'}
         style={{
-          width: '100%',
           height: '44px',
-          background: '#000',
-          color: '#fff',
-          border: 'none',
-          borderRadius: '6px',
+          background: isDark ? '#fff' : '#000',
+          color: isDark ? '#000' : '#fff',
+          border: isDark ? '1px solid #fff' : '1px solid #000',
+          borderRadius: '4px',
           fontSize: '14px',
           fontWeight: 500,
+          cursor: 'pointer',
+          whiteSpace: 'nowrap',
+          opacity: status === 'loading' ? 0.5 : 1,
+          transition: 'opacity 0.2s ease',
         }}
       >
-        Join Waitlist
+        {status === 'loading' ? 'Joining…' : 'Join Waitlist'}
       </button>
 
+      <style>{`
+        @media (max-width: 639px) {
+          .waitlist-form {
+            flex-direction: column !important;
+            align-items: stretch !important;
+          }
+          .waitlist-form input,
+          .waitlist-form button {
+            width: 100% !important;
+          }
+        }
+        @media (min-width: 640px) {
+          .waitlist-form button {
+            width: auto !important;
+            padding-left: 24px !important;
+            padding-right: 24px !important;
+          }
+        }
+      `}</style>
+
     </form>
-
-    <style jsx>{`
-      @media (min-width: 640px) {
-        form {
-          flex-direction: row !important;
-        }
-
-        button {
-          width: auto !important;
-          padding: 0 24px !important;
-          white-space: nowrap;
-        }
-      }
-    `}</style>
-
-  </div>
-)
-} 
+  )
+}

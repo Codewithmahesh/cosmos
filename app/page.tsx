@@ -6,18 +6,32 @@ import Stack from '@/components/Stack'
 import WhyNow from '@/components/WhyNow'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
+import { SectionWrapper } from '@/components/SectionWrapper'
 
 export default function Home() {
   return (
-    <main className="bg-white">
+    
+    <>
       <Nav />
-      <Hero />
-      <Problem />
+      
+      <SectionWrapper>
+        <Hero />
+      </SectionWrapper>
+
+      <SectionWrapper>
+        <Problem />
+      </SectionWrapper>
+      
+      {/* How It Works: White section (no wrapper needed, or standard div) */}
       <HowItWorks />
-      <Stack />
+      
+      <SectionWrapper>
+        <Stack />
+      </SectionWrapper>
+      
       <WhyNow />
       <CTA />
       <Footer />
-    </main>
+  </>
   )
 }

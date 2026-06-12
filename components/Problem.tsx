@@ -17,7 +17,7 @@ const CARDS = [
 
 export default function Problem() {
   return (
-    <section className="section-pad bg-white hairline-t">
+    <section className="section-pad hairline-t">
       <div className="container-wide">
 
         <FadeUp>
@@ -25,7 +25,7 @@ export default function Problem() {
         </FadeUp>
 
         <FadeUp delay={0.07}>
-          <h2 className="t-heading" style={{ maxWidth: '720px', marginBottom: '1.25rem' }}>
+          <h2 className="t-heading" style={{ maxWidth: '820px', marginBottom: '1.25rem' }}>
             Your agent fails. You hardcode a fix.
             It breaks next week. Repeat.
           </h2>
