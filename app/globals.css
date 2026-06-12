@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+body {
+  background: #fff;
+  color: #000;
+  font-family: var(--font-body), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ── Layout ────────────────────────────────────────────── */
+.section-pad {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+@media (min-width: 768px) {
+  .section-pad { padding-top: 6.5rem; padding-bottom: 6.5rem; }
+}
+
+.container-wide {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-wide { padding-left: 3rem; padding-right: 3rem; }
+}
+
+.hairline-t { border-top: 1px solid rgba(0,0,0,0.08); }
+.hairline-b { border-bottom: 1px solid rgba(0,0,0,0.08); }
+.hairline    { border: 1px solid rgba(0,0,0,0.08); }
+
+/* ── Typography ────────────────────────────────────────── */
+
+/*
+ * Line-height must be >= 1.0 for multi-line headings.
+ * When line-height < 1, the browser paints each line's
+ * background over the descenders of the previous line,
+ * making letters like "g" appear clipped.
+ *
+ * Font: Plus Jakarta Sans — very clean, bold, editorial.
+ * Variable: --font-heading (injected by next/font/google)
+ */
+
+/* Hero display */
+.t-display {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.5rem, 7vw, 8rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #000;
+  padding-bottom: 0.3em;
+  overflow: visible;
+}
+
+/* Section headings */
+.t-heading {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.875rem, 4.5vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  color: #000;
+  padding-bottom: 0.25em;
+  overflow: visible;
+}
+
+/* CTA heading (white background) */
+.t-cta {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', 'Arial Black', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.25rem, 6vw, 7rem);
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  color: #fff;
+  padding-bottom: 0.3em;
+  overflow: visible;
+}
+
+/* Card / step title */
+.t-title {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: #000;
+  padding-bottom: 0.1em;
+}
+
+/* Section label */
+.t-label {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 10.5px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #999;
+  display: block;
+}
+
+/* Body text */
+.t-body {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+  line-height: 1.7;
+  color: #555;
+}
+
+/* Small description */
+.t-desc {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  color: #777;
+}
+
+/* Index numbers */
+.t-num {
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  color: #ccc;
+}
+
+/* Nav brand */
+.t-brand {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: -0.02em;
+  color: #000;
+}
+
+/* Timeline event title */
+.t-event {
+  font-family: var(--font-heading), 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: clamp(0.9375rem, 1.1vw, 1.125rem);
+  letter-spacing: -0.01em;
+  color: #000;
+  padding-bottom: 0.05em;
+}
+
+/* ── Marquee ───────────────────────────────────────────── */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-inner {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+  will-change: transform;
+  font-family: var(--font-body), 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 10px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: #bbb;
+  user-select: none;
+}
+
+/* ── Selection ─────────────────────────────────────────── */
+::selection { background: #000; color: #fff; }
