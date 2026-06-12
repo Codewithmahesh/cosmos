@@ -61,6 +61,7 @@ export function WaitlistForm({ variant = 'light' }: { variant?: Variant }) {
       <button
         type="submit"
         disabled={status === 'loading'}
+        className="w-full sm:w-auto"
         style={{
           fontFamily: "var(--font-inter), 'Inter', sans-serif",
           fontSize: '14px',

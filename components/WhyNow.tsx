@@ -29,17 +29,14 @@ export default function WhyNow() {
             {EVENTS.map((ev) => (
               <div
                 key={ev.date}
+                className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-6"
                 style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.2rem',
                   padding: '1.25rem 0 1.25rem 1rem',
                   borderBottom: '1px solid rgba(0,0,0,0.08)',
                   borderLeft: ev.highlight
                     ? '3px solid #000'
                     : '3px solid transparent',
                 }}
-                className="sm:flex-row sm:items-center"
               >
                 <span
                   style={{
