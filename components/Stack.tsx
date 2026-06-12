@@ -25,41 +25,53 @@ export default function Stack() {
           </h2>
         </FadeUp>
 
-        <FadeUp delay={0.14}>
-          <div className="hairline-t">
-            {LAYERS.map((layer) => (
-              <div key={layer.num} className="hairline-b">
-                {/* Mobile */}
-                <div className="flex gap-5 items-start py-5 md:hidden">
-                  <span className="t-num" style={{ paddingTop: '2px', minWidth: '2.25rem', flexShrink: 0 }}>
-                    {layer.num}
-                  </span>
-                  <div>
-                    <span className="t-title" style={{ display: 'block', marginBottom: '0.375rem' }}>
-                      {layer.name}
-                    </span>
-                    <p className="t-desc">{layer.desc}</p>
-                  </div>
-                </div>
-                {/* Desktop */}
-                <div
-                  className="hidden md:grid"
-                  style={{
-                    gridTemplateColumns: '2.5rem 14rem 1fr',
-                    gap: '2.5rem',
-                    alignItems: 'center',
-                    paddingTop: '1.375rem',
-                    paddingBottom: '1.375rem',
-                  }}
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {LAYERS.map((layer, i) => (
+            <FadeUp
+              key={layer.num}
+              delay={0.14 + i * 0.07}
+              className={
+                i === LAYERS.length - 1 && LAYERS.length % 2 !== 0
+                  ? 'sm:col-span-2'
+                  : ''
+              }
+            >
+              <div
+                style={{
+                  background: '#000',
+                  padding: '2rem',
+                  boxShadow: '0 4px 24px rgba(0,0,0,0.14), 0 1px 4px rgba(0,0,0,0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '0.875rem',
+                  boxSizing: 'border-box',
+                }}
+              >
+                <span
+                  className="t-num"
+                  style={{ color: 'rgba(255,255,255,0.3)' }}
                 >
-                  <span className="t-num">{layer.num}</span>
-                  <span className="t-title">{layer.name}</span>
-                  <p className="t-desc">{layer.desc}</p>
-                </div>
+                  {layer.num}
+                </span>
+
+                <span
+                  className="t-title"
+                  style={{ color: '#fff', fontSize: '1.0625rem' }}
+                >
+                  {layer.name}
+                </span>
+
+                <p
+                  className="t-desc"
+                  style={{ color: 'rgba(255,255,255,0.5)', marginTop: 'auto', paddingTop: '0.25rem' }}
+                >
+                  {layer.desc}
+                </p>
               </div>
-            ))}
-          </div>
-        </FadeUp>
+            </FadeUp>
+          ))}
+        </div>
 
       </div>
     </section>

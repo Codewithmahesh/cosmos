@@ -5,16 +5,30 @@ import { joinWaitlist } from '@/app/actions'
 
 type Variant = 'light' | 'dark'
 
-export function WaitlistForm({ variant = 'light' }: { variant?: Variant }) {
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+export function WaitlistForm({
+  variant = 'light',
+}: {
+  variant?: Variant
+}) {
+  const [status, setStatus] = useState<
+    'idle' | 'loading' | 'success' | 'error'
+  >('idle')
+
   const isDark = variant === 'dark'
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(
+    e: React.FormEvent<HTMLFormElement>
+  ) {
     e.preventDefault()
     setStatus('loading')
+
     const data = new FormData(e.currentTarget)
+
     try {
-      const result = await joinWaitlist((data.get('email') as string) ?? '')
+      const result = await joinWaitlist(
+        (data.get('email') as string) ?? ''
+      )
+
       setStatus(result.success ? 'success' : 'error')
     } catch {
       setStatus('error')
@@ -23,62 +37,89 @@ export function WaitlistForm({ variant = 'light' }: { variant?: Variant }) {
 
   if (status === 'success') {
     return (
-      <p
-        style={{
-          fontFamily: "var(--font-inter), 'Inter', sans-serif",
-          fontSize: '14px',
-          fontWeight: 500,
-          letterSpacing: '0.01em',
-          color: isDark ? '#fff' : '#000',
-        }}
-      >
-        You&apos;re on the list.
-      </p>
+      <>
+        <p className="success-text">
+          You&apos;re on the list.
+        </p>
+
+        <style jsx>{`
+          .success-text {
+            font-size: 14px;
+            font-weight: 500;
+            color: ${isDark ? '#fff' : '#000'};
+          }
+        `}</style>
+      </>
     )
   }
 
-  return (
-    <form onSubmit={handleSubmit} className="flex w-full flex-col gap-2 sm:flex-row">
+return (
+  <div
+    style={{
+      width: '100%',
+      maxWidth: '100vw',
+      overflow: 'hidden',
+    }}
+  >
+    <form
+      onSubmit={handleSubmit}
+      style={{
+        display: 'flex',
+        width: '100%',
+        maxWidth: '560px',
+        flexDirection: 'column',
+        gap: '12px',
+      }}
+    >
+
       <input
         type="email"
         name="email"
         required
         placeholder="you@company.com"
-        disabled={status === 'loading'}
         style={{
-          flex: 1,
-          fontFamily: "var(--font-inter), 'Inter', sans-serif",
+          width: '100%',
+          boxSizing: 'border-box',
+          height: '44px',
+          padding: '0 16px',
+          borderRadius: '6px',
+          border: '1px solid #ddd',
           fontSize: '14px',
-          fontWeight: 400,
-          padding: '12px 16px',
-          background: isDark ? 'transparent' : '#fff',
-          border: isDark ? '1px solid rgba(255,255,255,0.2)' : '1px solid rgba(0,0,0,0.14)',
-          color: isDark ? '#fff' : '#000',
-          outline: 'none',
-          transition: 'border-color 0.15s',
         }}
       />
+
       <button
         type="submit"
-        disabled={status === 'loading'}
-        className="w-full sm:w-auto"
         style={{
-          fontFamily: "var(--font-inter), 'Inter', sans-serif",
+          width: '100%',
+          height: '44px',
+          background: '#000',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '6px',
           fontSize: '14px',
           fontWeight: 500,
-          padding: '12px 24px',
-          background: isDark ? '#fff' : '#000',
-          color: isDark ? '#000' : '#fff',
-          border: 'none',
-          cursor: 'pointer',
-          whiteSpace: 'nowrap',
-          opacity: status === 'loading' ? 0.5 : 1,
-          transition: 'opacity 0.15s',
-          letterSpacing: '0.01em',
         }}
       >
-        {status === 'loading' ? 'Joining…' : 'Join Waitlist'}
+        Join Waitlist
       </button>
+
     </form>
-  )
-}
+
+    <style jsx>{`
+      @media (min-width: 640px) {
+        form {
+          flex-direction: row !important;
+        }
+
+        button {
+          width: auto !important;
+          padding: 0 24px !important;
+          white-space: nowrap;
+        }
+      }
+    `}</style>
+
+  </div>
+)
+} 

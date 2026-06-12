@@ -56,7 +56,7 @@ body {
 .t-display {
   font-family: var(--font-heading), 'Plus Jakarta Sans', 'Arial Black', sans-serif;
   font-weight: 800;
-  font-size: clamp(2.5rem, 7vw, 8rem);
+  font-size: clamp(1.75rem, 8vw, 8rem);
   line-height: 1.0;
   letter-spacing: -0.03em;
   color: #000;
@@ -174,6 +174,9 @@ body {
   color: #bbb;
   user-select: none;
 }
+
+/* ── Waitlist form ─────────────────────────────────────── */
+.waitlist-input-dark::placeholder { color: rgba(255,255,255,0.4); }
 
 /* ── Selection ─────────────────────────────────────────── */
 ::selection { background: #000; color: #fff; }

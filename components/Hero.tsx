@@ -4,7 +4,7 @@ const TICKER = 'DISCOVERY · TRUST · CONTEXT · ROUTING · PAYMENTS · FAILURE 
 
 export default function Hero() {
   return (
-    <section className="flex min-h-screen flex-col bg-white pt-16">
+    <section className="flex min-h-screen flex-col bg-white pt-16 overflow-x-hidden">
       <div className="container-wide flex flex-1 flex-col justify-between py-14 md:py-20">
 
         {/* Label */}
@@ -32,15 +32,25 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-20">
-            <p className="t-body" style={{ maxWidth: '26rem' }}>
-              Cosmos is the missing layer between AI agents — so they can find
-              each other, trust each other, and hand off work without breaking.
-            </p>
-            <div className="flex items-start">
-              <WaitlistForm variant="light" />
-            </div>
-          </div>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-20 items-start">
+  <p className="t-body  sm:mx-w-2rem " 
+  
+  style={{ maxWidth: '20rem'
+            
+
+   }}
+  >
+    Cosmos is the missing layer between AI agents — so they can find
+    each other, trust each other, and hand off work without breaking.
+  </p>
+
+  <div className="w-full min-w-0"  style={{ maxWidth: '20rem'
+            
+
+   }} >
+    <WaitlistForm variant="light"  />
+  </div>
+</div>
         </div>
 
       </div>
