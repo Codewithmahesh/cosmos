@@ -1,5 +1,4 @@
 import { FadeUp } from './FadeUp'
-import { TallyButton } from './TallyButton'
 
 export default function CTA() {
   return (
@@ -25,7 +24,14 @@ export default function CTA() {
 
         <FadeUp delay={0.17}>
           <div style={{ maxWidth: '460px' }}>
-            <TallyButton className="tally-btn-dark">Join Waitlist</TallyButton>
+            <a
+              href="https://tally.so/r/NpOLxl"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="tally-btn-dark"
+            >
+              Join Waitlist
+            </a>
           </div>
         </FadeUp>
 

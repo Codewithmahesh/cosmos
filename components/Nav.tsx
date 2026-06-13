@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { TallyButton } from './TallyButton'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -24,7 +23,14 @@ export default function Nav() {
           <span className="t-label" style={{ letterSpacing: '0.04em', fontSize: '13px', textTransform: 'none', color: '#aaa' }}>
             by Exponentor
           </span>
-          <TallyButton className="nav-waitlist-btn">Join Waitlist</TallyButton>
+          <a
+            href="https://tally.so/r/NpOLxl"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-waitlist-btn"
+          >
+            Join Waitlist
+          </a>
         </div>
       </div>
     </nav>

@@ -226,6 +226,8 @@ body {
 }
 
 .nav-waitlist-btn {
+  display: inline-flex;
+  align-items: center;
   height: 34px;
   padding: 0 16px;
   background: #000;
@@ -237,7 +239,13 @@ body {
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
   transition: opacity 0.2s ease;
+}
+
+.tally-btn-light,
+.tally-btn-dark {
+  text-decoration: none;
 }
 
 /* ── Waitlist form ─────────────────────────────────────── */
