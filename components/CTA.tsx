@@ -1,5 +1,5 @@
 import { FadeUp } from './FadeUp'
-import { WaitlistForm } from './WaitlistForm'
+import { TallyButton } from './TallyButton'
 
 export default function CTA() {
   return (
@@ -25,7 +25,7 @@ export default function CTA() {
 
         <FadeUp delay={0.17}>
           <div style={{ maxWidth: '460px' }}>
-            <WaitlistForm variant="dark" />
+            <TallyButton className="tally-btn-dark">Join Waitlist</TallyButton>
           </div>
         </FadeUp>
 

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { TallyButton } from './TallyButton'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -19,9 +20,12 @@ export default function Nav() {
     >
       <div className="container-wide flex h-full items-center justify-between">
         <span className="t-brand select-none">COSMOS.</span>
-        <span className="t-label" style={{ letterSpacing: '0.04em', fontSize: '13px', textTransform: 'none', color: '#aaa' }}>
-          by Exponentor
-        </span>
+        <div className="flex items-center gap-6">
+          <span className="t-label" style={{ letterSpacing: '0.04em', fontSize: '13px', textTransform: 'none', color: '#aaa' }}>
+            by Exponentor
+          </span>
+          <TallyButton className="nav-waitlist-btn">Join Waitlist</TallyButton>
+        </div>
       </div>
     </nav>
   )
